@@ -66,20 +66,19 @@
  *
  */
 
-package main
+// package main
 
-import (
-	"fmt"
-	"sort"
-	// "string"
-)
+// import (
+// 	"fmt"
+// 	"sort"
+// )
 
-func main() {
-	s := "qdwyt"
-	pairs := [][]int{{2, 3}, {3, 2}, {0, 1}, {4, 0}, {3, 2}}
-	res := smallestStringWithSwaps(s, pairs)
-	fmt.Println(res)
-}
+// func main() {
+// 	s := "qdwyt"
+// 	pairs := [][]int{{2, 3}, {3, 2}, {0, 1}, {4, 0}, {3, 2}}
+// 	res := smallestStringWithSwaps(s, pairs)
+// 	fmt.Println(res)
+// }
 
 // @lc code=start
 func smallestStringWithSwaps(s string, pairs [][]int) string {
