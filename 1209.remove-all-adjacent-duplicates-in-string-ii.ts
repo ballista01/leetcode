@@ -97,3 +97,8 @@ function removeDuplicates(s: string, k: number): string {
   return res.join("");
 }
 // @lc code=end
+
+// Accepted
+// 20/20 cases passed (96 ms)
+// Your runtime beats 73.33 % of typescript submissions
+// Your memory usage beats 36.67 % of typescript submissions (54.1 MB)
