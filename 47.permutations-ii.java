@@ -12,7 +12,7 @@ class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         Stack<Integer> perm = new Stack();
-        if (nums.length <= 0 || nums == null)
+        if (nums == null || nums.length <= 0)
             return ans;
         boolean[] numUsed = new boolean[nums.length];
         Arrays.sort(nums);
