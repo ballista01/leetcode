@@ -1,1 +1,3 @@
-PASSED=$(ls *.go) & cp $PASSED ../passed/$PASSED & rm $PASSED
+PASSED=$(ls *.go)
+cp $PASSED ../passed/$PASSED
+rm -v $PASSED
