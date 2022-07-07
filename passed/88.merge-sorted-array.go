@@ -3,27 +3,35 @@
  *
  * [88] Merge Sorted Array
  */
-package pending
+package main
 
 // @lc code=start
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	x, y, xe := m-1, n-1, m+n-1
-	for x >= 0 && y >= 0 {
-		if nums1[x] >= nums2[y] {
-			nums1[xe] = nums1[x]
-			xe--
-			x--
+	m--
+	n--
+	index := len(nums1) - 1
+	for {
+		if m >= 0 && n >= 0 {
+			if nums1[m] > nums2[n] {
+				nums1[index] = nums1[m]
+				m--
+			} else {
+				nums1[index] = nums2[n]
+				n--
+			}
+			index--
+		} else if m >= 0 && n < 0 {
+			nums1[index] = nums1[m]
+			m--
+			index--
+		} else if m < 0 && n >= 0 {
+			nums1[index] = nums2[n]
+			n--
+			index--
 		} else {
-			nums1[xe] = nums2[y]
-			xe--
-			y--
+			break
 		}
 	}
-	for ; y >= 0; y-- {
-		nums1[xe] = nums2[y]
-		xe--
-	}
-
 }
 
 // @lc code=end
@@ -31,4 +39,4 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 // Accepted
 // 59/59 cases passed (0 ms)
 // Your runtime beats 100 % of golang submissions
-// Your memory usage beats 76.03 % of golang submissions (2.2 MB)
+// Your memory usage beats 83.25 % of golang submissions (2.3 MB)
