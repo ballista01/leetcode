@@ -11,42 +11,44 @@ type ListNode struct {
 }
 
 // @lc code=start
-
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	carry, val1, val2 := 0, 0, 0
-	dummy := new(ListNode)
-	prev := dummy
-	for pt1, pt2 := l1, l2; pt1 != nil || pt2 != nil || carry > 0; {
-		if pt1 != nil {
-			val1 = pt1.Val
+	carry := 0
+	root := new(ListNode)
+	prev := root
+	var now *ListNode
+	var v1, v2 int
+	for l1 != nil || l2 != nil {
+		if l1 == nil {
+			v1 = 0
 		} else {
-			val1 = 0
+			v1 = l1.Val
+			l1 = l1.Next
 		}
-		if pt2 != nil {
-			val2 = pt2.Val
+		if l2 == nil {
+			v2 = 0
 		} else {
-			val2 = 0
+			v2 = l2.Val
+			l2 = l2.Next
 		}
 
-		now := new(ListNode)
-		now.Val = (val1 + val2 + carry) % 10
-		carry = (val1 + val2 + carry) / 10
+		now = new(ListNode)
+		now.Val = (v1 + v2 + carry) % 10
+		carry = (v1 + v2 + carry) / 10
+
 		prev.Next = now
 		prev = now
-
-		if pt1 != nil {
-			pt1 = pt1.Next
-		}
-		if pt2 != nil {
-			pt2 = pt2.Next
-		}
 	}
-	return dummy.Next
+	if carry > 0 {
+		now = new(ListNode)
+		now.Val = carry
+		prev.Next = now
+	}
+	return root.Next
 }
 
 // @lc code=end
 
 // Accepted
 // 1568/1568 cases passed (7 ms)
-// Your runtime beats 91.69 % of golang submissions
-// Your memory usage beats 73.64 % of golang submissions (4.5 MB)
+// Your runtime beats 94.75 % of golang submissions
+// Your memory usage beats 83.7 % of golang submissions (4.5 MB)
