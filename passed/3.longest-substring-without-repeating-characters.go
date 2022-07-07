@@ -3,32 +3,27 @@
  *
  * [3] Longest Substring Without Repeating Characters
  */
-
 package main
 
 // @lc code=start
 func lengthOfLongestSubstring(s string) int {
 	maxLen, nowLen := 0, 0
-	rMap := make(map[rune]bool)
-	for i, r := range s {
-		if !rMap[r] {
-			nowLen++
-			rMap[r] = true
-			if nowLen > maxLen {
-				maxLen = nowLen
+	hash := make(map[rune]int, 26)
+	for i, v := range s {
+		nowLen++
+		lastIndex, collision := hash[v]
+		if collision {
+			for j := i - (nowLen - 1); j < lastIndex; j++ {
+				delete(hash, rune(s[j]))
 			}
+			nowLen = i - lastIndex
+			hash[v] = i
 		} else {
-			nowLen++
-			for j := i - nowLen + 1; j < i; j++ {
-				rPre := rune(s[j])
-				if rPre != r {
-					delete(rMap, rPre)
-					nowLen--
-				} else {
-					nowLen--
-					break
-				}
-			}
+			hash[v] = i
+		}
+
+		if nowLen > maxLen {
+			maxLen = nowLen
 		}
 	}
 	return maxLen
@@ -37,6 +32,6 @@ func lengthOfLongestSubstring(s string) int {
 // @lc code=end
 
 // Accepted
-// 987/987 cases passed (0 ms)
-// Your runtime beats 100 % of golang submissions
-// Your memory usage beats 85.4 % of golang submissions (2.5 MB)
+// 987/987 cases passed (3 ms)
+// Your runtime beats 94.17 % of golang submissions
+// Your memory usage beats 70.33 % of golang submissions (2.8 MB)
