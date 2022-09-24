@@ -12,14 +12,14 @@ func generateParenthesis(n int) []string {
 	resArr := make([]string, 0, n*n)
 	comb := make([]byte, 0, n*2)
 
-	generateParenthesisHelper(n*2, 0, comb, &resArr)
+	generateParenthesisHelper(n*2, 0, comb, resArr)
 	return resArr
 }
 
-func generateParenthesisHelper(n int, balance int, comb []byte, resArr *[]string) {
+func generateParenthesisHelper(n int, balance int, comb []byte, resArr []string) {
 	if n == 0 && balance == 0 {
 		combStr := bytes.NewBuffer(comb).String()
-		*resArr = append(*resArr, combStr)
+		resArr = append(resArr, combStr)
 		return
 	}
 	if balance > n || balance < 0 {
