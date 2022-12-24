@@ -37,4 +37,4 @@ class Solution {
 // Accepted
 // 48/48 cases passed (2 ms)
 // Your runtime beats 99.89 % of java submissions
-// Your memory usage beats 82.73 % of java submissions (43.1 MB)
+// Your memory usage beats 94.15 % of java submissions (42.7 MB)
